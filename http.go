@@ -6,10 +6,10 @@ import (
 	"net/http"
 )
 
-func reqJsonToObject(resp *http.Response, v interface{}) error {
-	defer resp.Body.Close()
+func reqJsonToObject(req *http.Request, v interface{}) error {
+	defer req.Body.Close()
 
-	content, err := ioutil.ReadAll(resp.Body)
+	content, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		return err
 	} else {
